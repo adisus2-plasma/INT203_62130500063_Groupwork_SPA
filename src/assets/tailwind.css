@@ -1,0 +1,17 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components{
+    
+    .topic {
+        @apply text-5xl text-white tracking-wider font-semibold font-extrabold; 
+    }
+    
+    .logo {
+        @apply h-12 ml-20 mx-8 ;
+    }
+
+}
