@@ -1,14 +1,12 @@
 <template>
 <div>
   <Background>
-  <div id="app" class="flex justify-center pt-6 mb-12 mr-8">
+  <div id="app" class="flex justify-center pt-6 mb-12 ">
     <img class="logo" src="../assets/images/saturn.png">
-    <h1 class="topic">W I T A R N . T H</h1>
+    <h1 class="topic">W I T A R N . N E W S</h1>
   </div>
 
-
-
-  <Info class="mt-96"></Info>
+  <Info class="mt-auto"></Info>
 
 </Background>
 </div>
