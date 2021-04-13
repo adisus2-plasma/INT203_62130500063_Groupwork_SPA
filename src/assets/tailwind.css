@@ -7,11 +7,20 @@
 @layer components{
     
     .topic {
-        @apply text-5xl text-white tracking-wider font-semibold font-extrabold; 
+        @apply flex text-5xl text-white tracking-wider font-semibold font-extrabold ; 
     }
     
     .logo {
         @apply h-12 ml-20 mx-8 ;
+    }
+
+    
+    .btnShowData {
+        @apply w-full h-12 rounded-md bg-blue-700 text-white hover:shadow hover:bg-blue-800
+    }
+
+    .btnAddData {
+        @apply w-auto h-12 rounded-md border-2 hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white mt-6
     }
 
 }
