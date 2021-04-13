@@ -1,7 +1,8 @@
 <template>
-  <div id="nav">
+  <div class="flex justify-center" id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/story">Your Story</router-link>
   </div>
   <router-view/>
 </template>
