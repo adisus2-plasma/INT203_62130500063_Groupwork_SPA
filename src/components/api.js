@@ -3,11 +3,13 @@ export default async function sendApiReq(){
     let response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}`);
     console.log(response)
     let data = await response.json()
-    console.log(data)
-    useApiData(data)
+    return data
 }
 
-function useApiData(data){
-    document.querySelector(".photo-content").innerHTML += data.explanation
-    document.querySelector(".photo-content").innerHTML += `<img src="${data.url}">`
-}
+// function useApiData(data){
+//     console.log(data)
+//     document.querySelector(".photo-title").innerHTML += data.title
+//     document.querySelector(".photo-date").innerHTML += data.date
+//     document.querySelector(".photo-content").innerHTML += data.explanation
+//     document.querySelector(".photo-content").innerHTML += `<img src="${data.url}">`
+// }

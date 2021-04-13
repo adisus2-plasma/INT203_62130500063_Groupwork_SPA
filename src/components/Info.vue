@@ -1,15 +1,29 @@
 <template>
-  <div>
-    <h1 class="flex justify-center font-bold mb-2 mr-72">HelloWorld</h1>
-    <div class="flex justify-center">
+  <div class="flex justify-center mt-7 mb-98">
+    <div>
+      <button @click="addEvent" id="btn" class="btnShowData">
+        load photo data
+      </button>
+    </div>
+    <br />
+    <div
+      v-if="isShowData"
+      class="p-3 bg-white rounded-xl max-w-screen-lg hover:shadow"
+    >
       <div>
-        <span class="photo-content"></span>
+        <span class="photo-title">{{ fetchItem.title }}</span>
+        <br />
+
+        <span class="photo-date">{{ fetchItem.date }}</span>
+        <br />
+
+        <span class="photo-content">{{ fetchItem.explanation }}</span>
+
+        <br />
+
+        <img :src="image" class="photo-image" />
       </div>
-      <br />
-      <image class="photo-image"></image>
-      <div class="ml-6">
-        <button id="btn" class="text-white font-bold">load photo data</button>
-      </div>
+      <button @click="save(fetchItem)" class="btnAddData">Add This Story</button>
     </div>
   </div>
 </template>
@@ -17,19 +31,53 @@
 <script>
 import sendApiReq from "./api.js";
 export default {
-  async mounted() {
-      this.addEvent()
+  data() {
+    return {
+      isShowData: false,
+      fetchItem: {
+      title: "",
+      data: "",
+      image: ""
+      }
+    };
   },
   methods: {
     addEvent() {
-      let button = document.querySelector("#btn");
-      button.addEventListener("click", async () => {
-        console.log("button pressed");
-        const apiReq = await sendApiReq();
-        if(apiReq){
-            console.log(apiReq);
-        }
+      const res = sendApiReq();
+      res
+        .then((data) => {
+          console.log(data);
+          this.fetchItem.title = data.title;
+          this.fetchItem.date = data.date;
+          this.fetchItem.explanation = data.explanation;
+          this.image = data.hdurl;
+        })
+        .then(() => {
+          this.setIsShowData();
+        });
+    },
+
+    setIsShowData() {
+      this.isShowData = true;
+    },
+
+    async save(data) {
+      const url = "http://localhost:5000/dataResult";
+      const response = await fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        redirect: "follow", // manual, *follow, error
+        referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
       });
+      console.log(this.save)
+      console.log(response)
     },
   },
 };
