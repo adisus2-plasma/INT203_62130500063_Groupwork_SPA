@@ -12,7 +12,8 @@
                     <br>
                     <span>{{result.explanation}}</span>
                 </li>
-                <button class=" mx-14 hover:shadow">Delete</button>
+                <button @click="edit(result.id)" class="my-4 mx-14 hover:shadow">Edit</button>
+                <button @click="deleteDataResult($event, result.id)" class=" my-4 mx-14 hover:shadow" label="x">Delete</button>
             </ul>
             </base-card>
         </div>
@@ -23,31 +24,83 @@
 
 <script>
 import Background from "../components/Background.vue";
+
 export default {
   components: {
     Background,
   },
   data() {
     return {
+      url: 'http://localhost:5000/dataResult',
+      errorMessage: null,
+      oldId:'',
+      oldTitle: '',
+      oldDate: '',
+      oldExplanation: '',
+      // isEdit: false,
         dataResult: [
-      {
-        title: "Confirmed Muon Wobble Remains Unexplained",
-        data: "",
-        image: "",
-        date: "2021-04-13",
-        explanation:
-          "How fast do elementary particles wobble?  A surprising answer to this seemingly inconsequential question came out of Brookhaven National Laboratory in New York, USA in 2001, and indicated that the Standard Model of Particle Physics, adopted widely in physics, is incomplete. Specifically, the muon, a particle with similarities to a heavy electron, has had its relatively large wobble under scrutiny in a series of experiments known as g-2 (gee-minus-two). The Brookhaven result galvanized other experimental groups around the world to confirm it, and pressured theorists to better understand it.  Reporting in last week, the most sensitive muon wobble experiment yet, conducted at Fermi National Accelerator Laboratory (Fermilab) in Illinois and pictured here, agreed with the Brookhaven result. The unexpected wobble rate may indicate that an ever-present sea of  virtual particles includes types not currently known.  Alternatively, it may indicate that flaws exist in difficult theoretical prediction calculations. Future runs at Fermilab's g-2 experiment will further increase precision and, possibly, the statistical difference between the universe we measure and the universe we understand.",
-        id: 1,
-      },
     ],
     }
   },
   methods: {
     async fetchItemResult() {
-      const res = await fetch("http://localhost:5000/dataResult");
+      const res = await fetch(this.url);
       const datas = await res.json();
       return datas;
     },
+    async deleteDataResult(label, id){
+      if(confirm(`Are you sure to ${label}?`)){ 
+        const res = await fetch(`${this.url}/${id}`,{
+          method: 'DELETE'
+        })
+        res.status === 200
+        ? (this.dataResult = this.dataResult.filter(
+          (data) => data.id !== id
+        ))
+        : alert('Error to delete data')
+      }
+      alert("Deleted!!")
+    },
+      edit(id){
+        this.$router.push(`/edit/${id}`)
+        console.log(this)
+      }
+    // editData(passingData, editId, editTitle, editDate, editExplanation){
+    //   this.isEdit = true
+    //   this.oldId = editId
+    //   this.oldTitle = editTitle
+    //   this.oldDate = editDate
+    //   this.oldExplanation = editExplanation
+
+    //   alert(
+    //     `${passingData.label} mode: ${this.isEdit}, you want to edit current daata {id: ${editId}, title: ${editTitle}, date: ${editDate}, Explanation: ${editExplanation}}`
+    //   )
+    // },
+    // async editDataResult(editingData) {
+    //   const res = await fetch(`${this.url}/${editingData.id}`, {
+    //     mothod: 'PUT',
+    //     headers: {
+    //       'Content-type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       title: editingData.title,
+    //       date: editingData.date,
+    //       explanation: editingData.explanation
+    //     })
+    //   })
+    //   const data = await res.json()
+    //   this.dataResult = this.dataResult.map((datas) =>
+    //     datas.id === data.id 
+    //     ? {
+    //       ...datas,
+    //       title: data.title,
+    //       date: data.date,
+    //       explanation: data.explanation
+    //     }
+    //     : datas
+    //     )
+    //     this.isEdit = false
+    // }
   },
   async created() {
       this.dataResult = await this.fetchItemResult();

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center" id="nav">
+  <div class="flex justify-center my-2 bg-white bg-opacity-50 rounded-xl" id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/story">Your Story</router-link>
