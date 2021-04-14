@@ -16,7 +16,7 @@
 
     
     .btnShowData {
-        @apply w-full h-12 rounded-md bg-blue-700 text-white hover:shadow hover:bg-blue-800
+        @apply p-3 w-full h-12 rounded-md bg-blue-700 text-white hover:shadow hover:bg-blue-800
     }
 
     .btnAddData {
