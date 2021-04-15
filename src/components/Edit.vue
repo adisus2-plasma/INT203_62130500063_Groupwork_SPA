@@ -71,6 +71,7 @@ export default {
       };
       const res = await fetch(this.url + `/${this.$route.params.id}`, putMethod);
       console.log(res);
+      alert(`update ${newPayLoad.id} compelete!! || please press "Your Story" for back to your collection`)
     },
 
     async getData() {
