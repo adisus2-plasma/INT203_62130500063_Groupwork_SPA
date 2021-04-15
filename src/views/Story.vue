@@ -33,11 +33,6 @@ export default {
     return {
       url: 'http://localhost:5000/dataResult',
       errorMessage: null,
-      oldId:'',
-      oldTitle: '',
-      oldDate: '',
-      oldExplanation: '',
-      // isEdit: false,
         dataResult: [
     ],
     }
@@ -49,17 +44,19 @@ export default {
       return datas;
     },
     async deleteDataResult(label, id){
-      if(confirm(`Are you sure to ${label}?`)){ 
+      if(confirm(`Are you sure to delete ID:${id} || ${label}?`)){ 
         const res = await fetch(`${this.url}/${id}`,{
           method: 'DELETE'
         })
+        alert(`Delete ID:${id} completed!!`)
         res.status === 200
         ? (this.dataResult = this.dataResult.filter(
           (data) => data.id !== id
+          
         ))
+        
         : alert('Error to delete data')
       }
-      alert("Deleted!!")
     },
       edit(id){
         this.$router.push(`/edit/${id}`)
