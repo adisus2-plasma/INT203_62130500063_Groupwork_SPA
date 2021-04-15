@@ -74,7 +74,7 @@ export default {
       });
       console.log(this.save);
       console.log(response);
-      alert("Saved!!")
+      alert(`Save!! ${data.title}`)
     },
   },
 };
