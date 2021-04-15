@@ -6,14 +6,14 @@
             <base-card>
             <ul v-for="result in dataResult" :key="result.id">
                 <li>
-                    <span>{{result.title}}</span>
+                    <span class="text-fuchsia-900 text-bold">{{result.title}}</span>
                     <br>
                     <span>{{result.date}}</span>
                     <br>
                     <span>{{result.explanation}}</span>
                 </li>
-                <button @click="edit(result.id)" class="my-4 mx-14 hover:shadow">Edit</button>
-                <button @click="deleteDataResult($event, result.id)" class=" my-4 mx-14 hover:shadow" label="x">Delete</button>
+                <button @click="edit(result.id)" class="btnEditData transform hover:scale-110 motion-reduce:transform-none">Edit</button>
+                <button @click="deleteDataResult($event, result.id)" class=" btnDeleteData transform hover:scale-110 motion-reduce:transform-none" label="x">Delete</button>
             </ul>
             </base-card>
         </div>

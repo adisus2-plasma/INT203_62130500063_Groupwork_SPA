@@ -19,7 +19,7 @@
               editedResult(explanation);
               putData();
             "
-            class="my-4 mx-14 hover:shadow"
+            class="btnSaveData transform hover:scale-110 motion-reduce:transform-none"
           >
             Save
           </button>

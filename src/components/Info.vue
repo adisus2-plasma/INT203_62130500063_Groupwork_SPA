@@ -1,12 +1,18 @@
 <template>
-  <div class="flex justify-center mt-7 mb-98">
-    <div>
-      <button @click="addEvent" id="btn" class="btnShowData">load photo data from NASA</button>
+  <div class="flex flex-col items-center mt-7 mb-98">
+    <div class="btnShowData">
+      <button @click="addEvent" id="btn">
+        load photo data from NASA
+      </button>
     </div>
-    <br />
-    <div v-if="isShowData" class="p-3 bg-white rounded-xl max-w-screen-lg hover:shadow">
+    <div
+      v-if="isShowData"
+      class="p-3 bg-white rounded-xl max-w-screen-lg hover:shadow"
+    >
       <div>
-        <span class="photo-title text-fuchsia-900 text-bold">{{ fetchItem.title }}</span>
+        <span class="photo-title text-fuchsia-900 text-bold">{{
+          fetchItem.title
+        }}</span>
         <br />
 
         <span class="photo-date">{{ fetchItem.date }}</span>
@@ -15,11 +21,13 @@
         <span class="photo-content">{{ fetchItem.explanation }}</span>
 
         <br />
-        <br>
+        <br />
 
         <img :src="image" class="photo-image rounded-xl" />
       </div>
-      <button @click="save(fetchItem)" class="btnAddData">Add This Story</button>
+      <button @click="save(fetchItem)" class="btnAddData transform hover:scale-110 motion-reduce:transform-none">
+        Add This Story
+      </button>
     </div>
   </div>
 </template>
@@ -74,15 +82,15 @@ export default {
       });
       console.log(this.save);
       console.log(response);
-      alert(`Save!! ${data.title}`)
+      alert(`Save!! ${data.title}`);
     },
   },
 };
 </script>
 
 <style>
-  .photo-image {
-   max-width: 100%;
+.photo-image {
+  max-width: 100%;
   height: auto;
-  }
+}
 </style>

@@ -16,11 +16,23 @@
 
     
     .btnShowData {
-        @apply p-3 w-full h-12 rounded-md bg-blue-700 text-white hover:shadow hover:bg-blue-800
+        @apply p-3 w-80 h-12 mb-8 rounded-md bg-blue-700 text-white hover:shadow hover:bg-blue-800 
     }
 
     .btnAddData {
-        @apply w-auto h-12 rounded-md border-2 hover:shadow hover:bg-red-700 hover:border-red-700 hover:text-white mt-6
+        @apply w-auto h-12 rounded-md text-white hover:shadow bg-green-700 hover:bg-green-700 hover:border-green-700 mt-6 p-2
+    }
+
+    .btnEditData {
+        @apply my-4 mx-20 text-white hover:shadow bg-green-700 hover:bg-green-700 hover:border-green-700 hover:text-black mt-6 p-2
+    }
+
+    .btnDeleteData {
+        @apply my-4 mx-20 text-white hover:shadow bg-red-700 hover:bg-red-700 hover:border-red-700 hover:text-black mt-6 p-2
+    }
+
+    .btnSaveData {
+        @apply w-auto h-12 rounded-md text-white hover:shadow bg-green-700 hover:bg-green-700 hover:border-green-700 mt-6 p-2
     }
 
 }

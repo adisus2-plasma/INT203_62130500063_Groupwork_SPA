@@ -1,8 +1,8 @@
 <template>
-  <div class="flex justify-center my-2 bg-white bg-opacity-50 rounded-xl" id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/story">Your Story</router-link>
+  <div class="flex justify-center my-2 mx-20 bg-white bg-opacity-50 rounded-xl" id="nav">
+    <router-link to="/">Home </router-link> |
+    <router-link to="/about"> About </router-link> |
+    <router-link to="/story"> Your Story</router-link>
   </div>
   <router-view/>
 </template>
@@ -14,6 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 98vw;
 }
 
 #nav {
@@ -26,6 +27,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #bbe600;
 }
 </style>

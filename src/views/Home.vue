@@ -5,9 +5,9 @@
     <img class="logo" src="../assets/images/saturn.png">
     <h1 class="topic">W I T A R N . N E W S</h1>
   </div>
-
+  <div class="flex justify-center">
   <Info class="mt-auto"></Info>
-
+  </div>
 </Background>
 </div>
   
